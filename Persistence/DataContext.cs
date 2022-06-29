@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Persistence;
 
@@ -12,4 +13,6 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
+    
+    public DbSet<Item> Items => Set<Item>();
 }

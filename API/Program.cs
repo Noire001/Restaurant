@@ -1,3 +1,5 @@
+using Application.MenuItems;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 using Serilog;
@@ -10,6 +12,9 @@ Log.Logger = new LoggerConfiguration()
     .CreateBootstrapLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddControllers();
+builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
@@ -28,6 +33,7 @@ using (var scope = app.Services.CreateScope())
     {
         var context = scope.ServiceProvider.GetRequiredService<DataContext>();
         await context.Database.MigrateAsync();
+        await Seed.SeedData(context);
     }
     catch (Exception e)
     {
@@ -35,6 +41,6 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
-app.MapGet("/", () => "Hello World!");
+app.MapControllers();
 
 app.Run();
