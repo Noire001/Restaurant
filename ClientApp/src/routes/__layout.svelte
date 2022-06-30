@@ -3,6 +3,6 @@
     import NavDrawer from "../lib/components/navigation/NavDrawer.svelte";
 </script>
 
-<NavDrawer> 
-    <slot />
+<NavDrawer>
+    <slot/>
 </NavDrawer>

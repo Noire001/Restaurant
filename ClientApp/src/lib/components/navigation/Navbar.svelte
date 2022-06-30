@@ -1,23 +1,45 @@
 ﻿<script>
     import Icon from "@iconify/svelte";
-    export let drawerId;
+
+    export let drawerContentScrollY = 0;
+    $: switchNavbarStyle = drawerContentScrollY > 40;
 </script>
 
 
-<div class="w-full navbar height:200px">
-    <input id="{drawerId}" type="checkbox" class="drawer-toggle" />
-    <div class="flex-none lg:hidden">
-        <label for="{drawerId}" class="btn btn-square btn-ghost">
-            <Icon icon="charm:menu-hamburger" width="36" height="36" />
-        </label>
-    </div>
-    <div class="flex-1 px-2 mx-2 ">Navbar Title</div>
-    <div class="flex-none hidden lg:block ">
-        <ul class="menu menu-horizontal ">
-            <!-- Navbar menu content here -->
-            <li><a>Navbar Item 1</a></li>
-            <li><a>Navbar Item 2</a></li>
-        </ul>
-    </div>
+<div class={`sticky top-0 z-30 flex h-16 w-full justify-center 
+
+            transition-all duration-100 text-primary-content text-base-content
+            ${(switchNavbarStyle ? "bg-base-100 text-base-content shadow-sm" : "text-primary-content")}
+`}>
+    <nav class={`navbar w-full text-primary-content ${(switchNavbarStyle ? "bg-base-100 text-base-content shadow-sm" : "text-primary-content")}`}>
+        <input id="drawer" type="checkbox" class="drawer-toggle"/>
+        <div class="flex-none ">
+            <label for="drawer" class="btn btn-square btn-ghost">
+                <Icon icon="charm:menu-hamburger" width="36" height="36"/>
+            </label>
+        </div>
+        <div class="flex lg:hidden">Restaurant</div>
+        <div class="flex-auto justify-end ">
+            <div class="menu menu-horizontal ">
+
+
+                <div class={`btn gap-1 normal-case btn-ghost`}>
+                    <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                         class="inline-block h-5 w-5 stroke-current md:h-6 md:w-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/>
+                    </svg>
+                    <span class="hidden md:inline">Theme</span>
+                    <svg width="12px" height="12px" class="ml-1 hidden h-3 w-3 fill-current opacity-60 sm:inline-block"
+                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                        <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"/>
+                    </svg>
+                </div>
+
+
+                <a class={`btn gap-1 normal-case btn-ghost`}>Language</a>
+            </div>
+        </div>
+    </nav>
 </div>
-<slot />
+<slot/>

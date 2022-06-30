@@ -19,6 +19,16 @@ builder.Services.AddDbContext<DataContext>(opt =>
 {
     opt.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy("CorsPolicy", policy =>
+    {
+        policy.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials()
+            .WithOrigins("http://localhost:3000");
+    });
+});
 
 builder.Host.UseSerilog((context, services, configuration) => configuration
     .ReadFrom.Configuration(context.Configuration)
@@ -40,6 +50,9 @@ using (var scope = app.Services.CreateScope())
         Log.Error(e, "Error while migrating database");
     }
 }
+
+app.UseStaticFiles();
+app.UseCors("CorsPolicy");
 
 app.MapControllers();
 

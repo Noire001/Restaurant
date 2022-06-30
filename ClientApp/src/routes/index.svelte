@@ -1,2 +1,8 @@
-<h1>Welcome to SvelteKit</h1>
-<p class="test-3xl font-bold underline">Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+    import MenuDashboard from "../features/menu/MenuDashboard.svelte";
+    import Hero from "../features/Hero.svelte";
+</script>
+
+
+<Hero/>
+<MenuDashboard/>
