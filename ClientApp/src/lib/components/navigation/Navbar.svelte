@@ -13,7 +13,7 @@
 `}>
     <nav class={`navbar w-full text-primary-content ${(switchNavbarStyle ? "bg-base-100 text-base-content shadow-sm" : "text-primary-content")}`}>
         <input id="drawer" type="checkbox" class="drawer-toggle"/>
-        <div class="flex-none ">
+        <div class="flex-none md:hidden">
             <label for="drawer" class="btn btn-square btn-ghost">
                 <Icon icon="charm:menu-hamburger" width="36" height="36"/>
             </label>

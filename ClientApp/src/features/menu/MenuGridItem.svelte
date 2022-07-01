@@ -5,8 +5,8 @@
 </script>
 
 
-<div class="card w-128 bg-base-100 shadow-xl">
-    <figure><img src="https://loremflickr.com/650/350" alt="Placeholder Image" /></figure>
+<div class="card w-96 bg-base-100 shadow-md rounded-sm">
+    <figure ><img src="https://loremflickr.com/600/350" alt="Placeholder Image" /></figure>
     <div class="card-body">
         <h2 class="card-title">
             {item.title}
