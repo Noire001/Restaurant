@@ -1,9 +1,9 @@
-﻿<div class="hero min-h-screen w-full -mt-[4rem] mb-[4rem]"
+﻿<div class="hero min-h-screen w-full -mt-[4rem] mb-[4rem] bg-fixed"
      style="background-image: url(http://localhost:5141/uploads/restaurant.webp);">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Restaurant</h1>
+            <h1 class="mb-5 text-5xl font-bold bg-fixed">Restaurant</h1>
             <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                 quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
             <button onclick="window.location.href='#menu-dashboard'" class="btn btn-primary">Menu</button>

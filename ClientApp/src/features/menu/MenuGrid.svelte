@@ -2,11 +2,15 @@
     import {store} from "../../lib/stores/store.ts";
     import MenuGridItem from "./MenuGridItem.svelte";
 
-    let itemStore = store.menuItemStore.menuItemRegistry;
+    $:itemsByCategory = store.menuItemStore.menuItemsByCategory;
 </script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-stretch">
-{#each [...$itemStore] as [key,value]}
-    <MenuGridItem item={value} />
+
+{#each [...itemsByCategory] as [key, value]}
+    <h1 class="text-5xl my-2 font-medium leading-normal">{key}</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 place-items-stretch">
+        {#each value as item}
+            <MenuGridItem item={item}/>
+        {/each}
+    </div>
 {/each}
-</div>

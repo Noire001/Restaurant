@@ -60,24 +60,45 @@ public class Seed
             },
             new()
             {
-                Title = "Pizza Napoletana",
-                Category = "Pizza",
-                Description = "San Marzano tomatoes, mozzarella cheese, fresh basil, salt",
-                Price = 30f
+                Title = "Salad",
+                Category = "Salad",
+                Description = "tomato asdfasfasdfad",
+                Price = 12f
             },
             new()
             {
-                Title = "Pizza Quattro Formaggi",
-                Category = "Pizza",
-                Description = "mozzarella cheese, parmeggiano, fontina",
-                Price = 30f
+                Title = "Salad",
+                Category = "Salad",
+                Description = "tomato asdfasfasdfad",
+                Price = 12f
             },
             new()
             {
-                Title = "Pizza Vegetariana",
-                Category = "Pizza",
-                Description = "San Marzano tomatoes, mozzarella cheese, fresh basil, olives, green pepper",
-                Price = 30f
+                Title = "Salad",
+                Category = "Salad",
+                Description = "tomato asdfasfasdfad",
+                Price = 12f
+            },
+            new()
+            {
+                Title = "Water",
+                Category = "Drinks",
+                Description = "bottled water",
+                Price = 5f
+            },
+            new()
+            {
+                Title = "Wine",
+                Category = "Drinks",
+                Description = "the finest wine in the world",
+                Price = 5000f
+            },
+            new()
+            {
+                Title = "Cola",
+                Category = "Drinks",
+                Description = "Coca-Cola or Pepsi",
+                Price = 128f
             },
         };
         await context.Items.AddRangeAsync(menuItems);

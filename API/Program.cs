@@ -26,7 +26,7 @@ builder.Services.AddCors(opt =>
         policy.AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials()
-            .WithOrigins("http://localhost:3000");
+            .WithOrigins("http://localhost:3000").WithOrigins("http://127.0.0.1:8080");
     });
 });
 
