@@ -6,7 +6,7 @@
 
 </script>
 {#if $itemRegistry !== undefined}
-    <div class="container-lg mx-auto">
+    <div id="menu-dashboard" class="container-lg mx-auto">
         <MenuGrid/>
     </div>
 {/if}

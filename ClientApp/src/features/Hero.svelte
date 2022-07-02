@@ -6,7 +6,7 @@
             <h1 class="mb-5 text-5xl font-bold">Restaurant</h1>
             <p class="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem
                 quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-            <button class="btn btn-primary">Menu</button>
+            <button onclick="window.location.href='#menu-dashboard'" class="btn btn-primary">Menu</button>
         </div>
     </div>
 </div>

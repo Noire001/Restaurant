@@ -12,7 +12,7 @@
 
 <svelte:window bind:innerHeight />
 
-<div class={`drawer ${drawerContentScrollY > innerHeight - 64 ? "drawer-mobile" : ""} absolute`}>
+<div class={`drawer ${(drawerContentScrollY > innerHeight - 64) && innerHeight !== 0 ? "drawer-mobile" : ""} absolute`}>
     <input id="drawer" type="checkbox" class="drawer-toggle"/>
     <div bind:this={drawerContent} on:scroll={parseContentScroll} class="drawer-content flex flex-col " style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
         <!-- Navbar -->
