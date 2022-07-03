@@ -5,7 +5,7 @@
     store.menuItemStore.loadItems();
 
 </script>
-{#if $itemRegistry !== undefined}
+{#if $itemRegistry.size > 0}
     <div id="menu-dashboard" class="container-lg mx-auto">
         <MenuGrid/>
     </div>
