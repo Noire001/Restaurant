@@ -10,6 +10,10 @@
     let innerHeight = 0;
     const registry = store.menuItemStore.menuItemRegistry
     $:categories = $registry.size > 0 ? store.menuItemStore.menuItemsByCategory : [];
+    
+    function scrollToTop() {
+        drawerContent.scrollTop = 0;
+    }
 </script>
 
 <svelte:window bind:innerHeight/>
@@ -26,9 +30,9 @@
     <div class="drawer-side">
         <label for="drawer" class="drawer-overlay"></label>
         <ul class="menu menu-vertical p-4 overflow-y-auto w-80 bg-base-300">
-            <li><a class="prose prose-2xl dark:prose-invert -mt-2">Restaurant</a></li>
+            <li><button on:click={scrollToTop} class="prose prose-2xl dark:prose-invert -mt-2">Restaurant</button></li>
             {#each [...categories] as [key, value]}
-                <li><a href={`#menu-${key.toLowerCase()}`}>{key}</a></li>
+                <li><button on:click={() => window.location.href=`#menu-${key.toLowerCase()}`}>{key}</button></li>
             {/each}
         </ul>
 
