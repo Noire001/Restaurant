@@ -1,5 +1,21 @@
-﻿<div class="hero min-h-screen w-full -mt-[4rem] mb-[4rem] bg-fixed"
-     style="background-image: url(http://localhost:5141/uploads/restaurant.webp);">
+﻿<style>
+    .background-hero {
+        background-image: url(http://localhost:5141/uploads/restaurant.webp);
+    }
+    @media (max-width: 600px) {
+        .background-hero {
+            background-image: url(http://localhost:5141/uploads/restaurant_xs.webp);
+        }
+    }
+    @media (max-width: 1000px) {
+        .background-hero {
+            background-image: url(http://localhost:5141/uploads/restaurant_sm.webp);
+        }
+    }
+</style>
+
+
+<div class="hero background-hero min-h-screen w-full -mt-[4rem] mb-[4rem] bg-fixed">
     <div class="hero-overlay bg-opacity-60"></div>
     <div class="hero-content text-center text-neutral-content">
         <div class="max-w-md">
@@ -10,3 +26,4 @@
         </div>
     </div>
 </div>
+
