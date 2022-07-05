@@ -1,4 +1,4 @@
-﻿<script>
+﻿<script lang="ts">
     import Navbar from "./Navbar.svelte";
     import {store} from "../../stores/store.ts";
 
@@ -13,13 +13,21 @@
     
     function scrollToTop() {
         drawerContent.scrollTop = 0;
+        drawerOpen = false;
     }
+    
+    function scrollToElement(element: string) {
+        window.location.href=`#${element}`;
+        drawerOpen = false;
+    }
+    
+    let drawerOpen = false;
 </script>
 
 <svelte:window bind:innerHeight/>
 
 <div class={`drawer ${(drawerContentScrollY > innerHeight - 64) && innerHeight !== 0 ? "drawer-mobile" : ""} absolute`}>
-    <input id="drawer" type="checkbox" class="drawer-toggle"/>
+    <input id="drawer" bind:checked={drawerOpen} type="checkbox" class="drawer-toggle"/>
     <div bind:this={drawerContent} on:scroll={parseContentScroll} class="drawer-content flex flex-col "
          style="scroll-behavior: smooth; scroll-padding-top: 5rem;">
         <!-- Navbar -->
@@ -32,7 +40,7 @@
         <ul class="menu menu-vertical p-4 overflow-y-auto w-80 bg-base-300">
             <li><button on:click={scrollToTop} class="prose prose-2xl dark:prose-invert -mt-2">Restaurant</button></li>
             {#each [...categories] as [key, value]}
-                <li><button on:click={() => window.location.href=`#menu-${key.toLowerCase()}`}>{key}</button></li>
+                <li><button on:click={() => scrollToElement(`menu-${key.toLowerCase()}`)}>{key}</button></li>
             {/each}
         </ul>
 
