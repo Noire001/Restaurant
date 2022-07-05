@@ -1,5 +1,5 @@
-﻿<script>
-    import {store} from "../../lib/stores/store.ts";
+﻿<script lang="ts">
+    import {store} from "../../lib/stores/store";
     import MenuGridItem from "./MenuGridItem.svelte";
 
     $:itemsByCategory = store.menuItemStore.menuItemsByCategory;

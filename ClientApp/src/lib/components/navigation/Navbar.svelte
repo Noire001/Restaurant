@@ -1,4 +1,4 @@
-﻿<script>
+﻿<script lang="ts">
     import Icon from "@iconify/svelte";
 
     export let drawerContentScrollY = 0;

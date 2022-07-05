@@ -1,5 +1,5 @@
-﻿<script>
-    import {store} from "../../lib/stores/store.ts";
+﻿<script lang="ts">
+    import {store} from "../../lib/stores/store";
     import MenuGrid from "./MenuGrid.svelte";
     const itemRegistry = store.menuItemStore.menuItemRegistry
     store.menuItemStore.loadItems();

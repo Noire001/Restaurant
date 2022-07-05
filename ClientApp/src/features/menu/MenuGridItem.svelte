@@ -1,7 +1,7 @@
-﻿<script>
-    import {Item} from "../../lib/models/Item.ts";
+﻿<script lang="ts">
+    import {Item} from "../../lib/models/Item";
 
-    export let item
+    export let item: Item
 </script>
 
 

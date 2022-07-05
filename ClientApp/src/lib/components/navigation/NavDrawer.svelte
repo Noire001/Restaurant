@@ -1,8 +1,8 @@
 ﻿<script lang="ts">
     import Navbar from "./Navbar.svelte";
-    import {store} from "../../stores/store.ts";
+    import {store} from "../../stores/store";
 
-    let drawerContent;
+    let drawerContent : HTMLDivElement;
     let drawerContentScrollY = 0;
     function parseContentScroll() {
         drawerContentScrollY = drawerContent.scrollTop;
