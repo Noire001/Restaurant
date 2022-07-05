@@ -119,7 +119,6 @@ public class Seed
                 Price = 128f
             },
         };
-        await context.Categories.AddRangeAsync(categories);
         await context.Items.AddRangeAsync(menuItems);
         await context.SaveChangesAsync();
     }

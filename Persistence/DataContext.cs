@@ -13,7 +13,7 @@ public class DataContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
     }
-    
+
     public DbSet<Item> Items => Set<Item>();
     public DbSet<Category> Categories => Set<Category>();
 }

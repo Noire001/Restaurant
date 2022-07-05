@@ -10,4 +10,10 @@ public class MenuItemController : BaseApiController
     {
         return HandleResult(await Mediator.Send(new List.Query { }));
     }
+    
+    [Route("categories")]
+    public async Task<IActionResult> GetMenuItem()
+    {
+        return HandleResult(await Mediator.Send(new ListByCategory.Query { }));
+    }
 }

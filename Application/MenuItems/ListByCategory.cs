@@ -8,14 +8,14 @@ using Persistence;
 
 namespace Application.MenuItems;
 
-public class List
+public class ListByCategory
 {
-    public class Query : IRequest<Result<List<ItemDto>>>
+    public class Query : IRequest<Result<List<CategoryDto>>>
     {
         
     }
-
-    public class Handler : IRequestHandler<Query, Result<List<ItemDto>>>
+    
+    public class Handler : IRequestHandler<Query, Result<List<CategoryDto>>>
     {
         private readonly DataContext _context;
         private readonly IMapper _mapper;
@@ -26,12 +26,13 @@ public class List
             _mapper = mapper;
         }
 
-        public async Task<Result<List<ItemDto>>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<Result<List<CategoryDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var q = await _context.Items
-                .ProjectTo<ItemDto>(_mapper.ConfigurationProvider)
+            var q = await _context.Categories
+                .OrderBy(x => x.Priority)
+                .ProjectTo<CategoryDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
-            return Result<List<ItemDto>>.Success(q);
+            return Result<List<CategoryDto>>.Success(q);
         }
     }
 }

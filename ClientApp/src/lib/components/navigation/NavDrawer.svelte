@@ -9,8 +9,7 @@
     }
     let innerHeight = 0;
     const registry = store.menuItemStore.menuItemRegistry
-    $:categories = $registry.size > 0 ? store.menuItemStore.menuItemsByCategory : [];
-    
+    $:categories = [...$registry.keys()]
     function scrollToTop() {
         drawerContent.scrollTop = 0;
         drawerOpen = false;
@@ -39,8 +38,8 @@
         <label for="drawer" class="drawer-overlay"></label>
         <ul class="menu menu-vertical p-4 overflow-y-auto w-80 bg-base-300">
             <li><button on:click={scrollToTop} class="prose prose-2xl dark:prose-invert -mt-2">Restaurant</button></li>
-            {#each [...categories] as [key, value]}
-                <li><button on:click={() => scrollToElement(`menu-${key.toLowerCase()}`)}>{key}</button></li>
+            {#each categories as category}
+                <li><button on:click={() => scrollToElement(`menu-${category.toLowerCase()}`)}>{category}</button></li>
             {/each}
         </ul>
 

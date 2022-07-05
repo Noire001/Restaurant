@@ -1,25 +1,14 @@
 ﻿import {get, writable} from 'svelte/store';
-import type {Item} from "../models/Item";
+import type {Item} from "../models/item";
 import agent from "../api/agent";
 
 export default class MenuItemStore {
-    menuItemRegistry = writable<Map<string, Item>>(new Map<string, Item>());
+    menuItemRegistry = writable<Map<string, Item[]>>(new Map<string, Item[]>());
     
     loadItems = async () => {
-        const items = await agent.MenuItems.list();
-        const result = new Map(items.map(item => [item.id, item]));
+        const categories = await agent.MenuItems.listByCategory();
+        categories.sort((a, b) => a.priority - b.priority);
+        const result = new Map(categories.map(category => [category.name, category.items]));
         this.menuItemRegistry.set(result);
-        
-    }
-    
-    get menuItemsByCategory() {
-        let items = new Map<string, Item[]>();
-        get(this.menuItemRegistry).forEach(item => {
-            if (!items.has(item.category)) {
-                items.set(item.category, []);
-            }
-            items.get(item.category)!.push(item);
-        })
-        return items;
     }
 }
