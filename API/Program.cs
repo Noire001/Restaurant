@@ -13,6 +13,7 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 builder.Services.AddControllers();
 builder.Services.AddMediatR(typeof(List.Handler).Assembly);
 builder.Services.AddDbContext<DataContext>(opt =>

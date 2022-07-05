@@ -15,4 +15,5 @@ public class DataContext : DbContext
     }
     
     public DbSet<Item> Items => Set<Item>();
+    public DbSet<Category> Categories => Set<Category>();
 }
