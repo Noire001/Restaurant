@@ -1,3 +1,5 @@
+using API.Extensions;
+using Application.Core;
 using Application.MenuItems;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -13,6 +15,8 @@ Log.Logger = new LoggerConfiguration()
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddIdentityServices(builder.Configuration);
+
 builder.Services.AddAutoMapper(typeof(MappingProfiles).Assembly);
 builder.Services.AddControllers();
 builder.Services.AddMediatR(typeof(List.Handler).Assembly);
@@ -27,7 +31,7 @@ builder.Services.AddCors(opt =>
         policy.AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials()
-            .WithOrigins("http://localhost:3000").WithOrigins("http://127.0.0.1:8080");
+            .SetIsOriginAllowed(origin => true);
     });
 });
 
